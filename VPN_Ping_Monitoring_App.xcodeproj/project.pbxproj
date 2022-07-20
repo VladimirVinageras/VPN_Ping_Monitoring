@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9392A6028861A31008F32BF /* VPN_Ping_Monitoring_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A5F28861A31008F32BF /* VPN_Ping_Monitoring_AppApp.swift */; };
-		F9392A6228861A31008F32BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A6128861A31008F32BF /* ContentView.swift */; };
+		F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A5F28861A31008F32BF /* PingMonitoringApp.swift */; };
+		F9392A6228861A31008F32BF /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A6128861A31008F32BF /* HostsView.swift */; };
 		F9392A6428861A31008F32BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9392A6328861A31008F32BF /* Assets.xcassets */; };
 		F9392A6728861A31008F32BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9392A6628861A31008F32BF /* Preview Assets.xcassets */; };
+		F9392A6F28861AC0008F32BF /* PingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A6E28861AC0008F32BF /* PingController.swift */; };
+		F9392A7328861B50008F32BF /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7128861B50008F32BF /* SimplePing.m */; };
+		F9392A7728875878008F32BF /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7628875878008F32BF /* Host.swift */; };
+		F9392A7928875C7E008F32BF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7828875C7E008F32BF /* CardView.swift */; };
+		F9392A7B2887655B008F32BF /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7A2887655B008F32BF /* Status.swift */; };
+		F9392A7D2887746B008F32BF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7C2887746B008F32BF /* DetailView.swift */; };
+		F9392A7F288777A5008F32BF /* HostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7E288777A5008F32BF /* HostStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F9392A5C28861A31008F32BF /* VPN_Ping_Monitoring_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VPN_Ping_Monitoring_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9392A5F28861A31008F32BF /* VPN_Ping_Monitoring_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPN_Ping_Monitoring_AppApp.swift; sourceTree = "<group>"; };
-		F9392A6128861A31008F32BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F9392A5F28861A31008F32BF /* PingMonitoringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingMonitoringApp.swift; sourceTree = "<group>"; };
+		F9392A6128861A31008F32BF /* HostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
 		F9392A6328861A31008F32BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9392A6628861A31008F32BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9392A6E28861AC0008F32BF /* PingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingController.swift; sourceTree = "<group>"; };
+		F9392A7028861B4F008F32BF /* VPN_Ping_Monitoring_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VPN_Ping_Monitoring_App-Bridging-Header.h"; sourceTree = "<group>"; };
+		F9392A7128861B50008F32BF /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		F9392A7228861B50008F32BF /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		F9392A7628875878008F32BF /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		F9392A7828875C7E008F32BF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		F9392A7A2887655B008F32BF /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		F9392A7C2887746B008F32BF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		F9392A7E288777A5008F32BF /* HostStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +67,18 @@
 		F9392A5E28861A31008F32BF /* VPN_Ping_Monitoring_App */ = {
 			isa = PBXGroup;
 			children = (
-				F9392A5F28861A31008F32BF /* VPN_Ping_Monitoring_AppApp.swift */,
-				F9392A6128861A31008F32BF /* ContentView.swift */,
+				F9392A7528861C13008F32BF /* Model */,
+				F9392A7428861B5D008F32BF /* SimplePing Library */,
+				F9392A7028861B4F008F32BF /* VPN_Ping_Monitoring_App-Bridging-Header.h */,
+				F9392A7228861B50008F32BF /* SimplePing.h */,
+				F9392A7128861B50008F32BF /* SimplePing.m */,
+				F9392A6E28861AC0008F32BF /* PingController.swift */,
 				F9392A6328861A31008F32BF /* Assets.xcassets */,
 				F9392A6528861A31008F32BF /* Preview Content */,
+				F9392A7828875C7E008F32BF /* CardView.swift */,
+				F9392A6128861A31008F32BF /* HostsView.swift */,
+				F9392A7C2887746B008F32BF /* DetailView.swift */,
+				F9392A5F28861A31008F32BF /* PingMonitoringApp.swift */,
 			);
 			path = VPN_Ping_Monitoring_App;
 			sourceTree = "<group>";
@@ -65,6 +89,23 @@
 				F9392A6628861A31008F32BF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9392A7428861B5D008F32BF /* SimplePing Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SimplePing Library";
+			sourceTree = "<group>";
+		};
+		F9392A7528861C13008F32BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9392A7628875878008F32BF /* Host.swift */,
+				F9392A7A2887655B008F32BF /* Status.swift */,
+				F9392A7E288777A5008F32BF /* HostStore.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +140,7 @@
 				TargetAttributes = {
 					F9392A5B28861A31008F32BF = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -137,8 +179,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9392A6228861A31008F32BF /* ContentView.swift in Sources */,
-				F9392A6028861A31008F32BF /* VPN_Ping_Monitoring_AppApp.swift in Sources */,
+				F9392A6228861A31008F32BF /* HostsView.swift in Sources */,
+				F9392A7D2887746B008F32BF /* DetailView.swift in Sources */,
+				F9392A7F288777A5008F32BF /* HostStore.swift in Sources */,
+				F9392A7728875878008F32BF /* Host.swift in Sources */,
+				F9392A7B2887655B008F32BF /* Status.swift in Sources */,
+				F9392A6F28861AC0008F32BF /* PingController.swift in Sources */,
+				F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */,
+				F9392A7928875C7E008F32BF /* CardView.swift in Sources */,
+				F9392A7328861B50008F32BF /* SimplePing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VPN_Ping_Monitoring_App/Preview Content\"";
@@ -273,6 +323,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -283,6 +334,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "aVVinSolutions.VPN-Ping-Monitoring-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VPN_Ping_Monitoring_App/VPN_Ping_Monitoring_App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -293,6 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VPN_Ping_Monitoring_App/Preview Content\"";
@@ -302,6 +356,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +367,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "aVVinSolutions.VPN-Ping-Monitoring-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VPN_Ping_Monitoring_App/VPN_Ping_Monitoring_App-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
