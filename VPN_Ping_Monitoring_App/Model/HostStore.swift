@@ -62,6 +62,37 @@ class HostStore: ObservableObject{
     
     
     @discardableResult
+    static func save(hosts: [Host]) async throws -> Int{
+        try await withCheckedThrowingContinuation{ continuation in
+            save(hosts: hosts){ result in
+                switch result{
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                case .success(let hostSaved):
+                    continuation.resume(returning: hostSaved)
+                }
+                
+            }
+            
+        }
+    }
     
     
+    static func save(hosts: [Host], completion: @escaping(Result<Int, Error>)-> Void){
+        DispatchQueue.global(qos: .background).async{
+            do{
+                let data = try JSONEncoder().encode(hosts)
+                let outfile = try fileURL()
+                try data.write(to: outfile)
+                DispatchQueue.main.async {
+                    completion(.success(hosts.count))
+                }
+                
+            }catch{
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

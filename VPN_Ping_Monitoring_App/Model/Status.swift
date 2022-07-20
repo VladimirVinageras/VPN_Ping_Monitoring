@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 
-enum Status: String {
+enum Status: String, Codable{
     case reachable
     case unreachable
         
