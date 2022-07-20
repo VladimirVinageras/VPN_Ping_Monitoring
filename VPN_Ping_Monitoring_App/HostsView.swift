@@ -24,6 +24,38 @@ struct HostsView: View {
             .onChange(of: scenePhase){ phase in
                 if phase == .inactive {saveAction()}
             }
+        }
+        .navigationTitle("Hosts")
+        .toolbar{
+            Button(action: {
+                isPresentingNewHostView = true
+            }){
+                Image(systemName: "plus")
+            }
+        }
+        .sheet(isPresented: $isPresentingNewHostView){
+            NavigationView{
+                DetailEditView(data: $newHostData)
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction){
+                            Button("Dismiss"){
+                                isPresentingNewHostView = false
+                                newHostData = Host.Data()
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction){
+                            Button("Add"){
+                                let newHost = Host(data: newHostData)
+                                hosts.append(newHost)
+                                isPresentingNewHostView = false
+                                newHostData = Host.Data()
+                            }
+                        }
+                    }
+            }
+        }
+        .onChange(of: scenePhase){ phase in
+            if phase == .inactive {saveAction()}
     }
   }
 }

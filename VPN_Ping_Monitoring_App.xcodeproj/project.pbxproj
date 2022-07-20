@@ -18,6 +18,9 @@
 		F9392A7B2887655B008F32BF /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7A2887655B008F32BF /* Status.swift */; };
 		F9392A7D2887746B008F32BF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7C2887746B008F32BF /* DetailView.swift */; };
 		F9392A7F288777A5008F32BF /* HostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7E288777A5008F32BF /* HostStore.swift */; };
+		F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A80288893DF008F32BF /* DetailEditView.swift */; };
+		F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A822888A61C008F32BF /* ErrorWrapper.swift */; };
+		F9392A852888A639008F32BF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A842888A639008F32BF /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		F9392A7A2887655B008F32BF /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		F9392A7C2887746B008F32BF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F9392A7E288777A5008F32BF /* HostStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStore.swift; sourceTree = "<group>"; };
+		F9392A80288893DF008F32BF /* DetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditView.swift; sourceTree = "<group>"; };
+		F9392A822888A61C008F32BF /* ErrorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
+		F9392A842888A639008F32BF /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,9 @@
 				F9392A7828875C7E008F32BF /* CardView.swift */,
 				F9392A6128861A31008F32BF /* HostsView.swift */,
 				F9392A7C2887746B008F32BF /* DetailView.swift */,
+				F9392A80288893DF008F32BF /* DetailEditView.swift */,
 				F9392A5F28861A31008F32BF /* PingMonitoringApp.swift */,
+				F9392A842888A639008F32BF /* ErrorView.swift */,
 			);
 			path = VPN_Ping_Monitoring_App;
 			sourceTree = "<group>";
@@ -101,6 +109,7 @@
 		F9392A7528861C13008F32BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9392A822888A61C008F32BF /* ErrorWrapper.swift */,
 				F9392A7628875878008F32BF /* Host.swift */,
 				F9392A7A2887655B008F32BF /* Status.swift */,
 				F9392A7E288777A5008F32BF /* HostStore.swift */,
@@ -182,8 +191,11 @@
 				F9392A6228861A31008F32BF /* HostsView.swift in Sources */,
 				F9392A7D2887746B008F32BF /* DetailView.swift in Sources */,
 				F9392A7F288777A5008F32BF /* HostStore.swift in Sources */,
+				F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */,
 				F9392A7728875878008F32BF /* Host.swift in Sources */,
 				F9392A7B2887655B008F32BF /* Status.swift in Sources */,
+				F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */,
+				F9392A852888A639008F32BF /* ErrorView.swift in Sources */,
 				F9392A6F28861AC0008F32BF /* PingController.swift in Sources */,
 				F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */,
 				F9392A7928875C7E008F32BF /* CardView.swift in Sources */,
