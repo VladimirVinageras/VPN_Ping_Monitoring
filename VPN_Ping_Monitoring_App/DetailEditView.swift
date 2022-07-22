@@ -15,10 +15,13 @@ struct DetailEditView: View {
             Section(header: Text("Host Name")){
                 
                 TextField("\(data.hostname)", text: $data.hostname)
-                
+                    .autocapitalization(.none)
             }
             Section(header: Text("IP Address/ Domain")){
                 TextField("\(data.ipAddress)", text: $data.ipAddress)
+                    .autocapitalization(.none)
+                    .keyboardType(.URL)
+                
             }
             Section(header: Text("Monitoring Frequency")){
                 TextField("\(data.checkFrequency)", value: $data.checkFrequency, formatter: NumberFormatter())

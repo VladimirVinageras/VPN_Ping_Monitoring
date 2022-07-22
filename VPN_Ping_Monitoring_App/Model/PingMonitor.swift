@@ -8,20 +8,27 @@
 import Foundation
 
 
-class PingController: NSObject, SimplePingDelegate{
+class PingMonitor: NSObject, SimplePingDelegate{
     
-    let hostname = ""
+    let hostname: String
+    let ipAddress: String
     let timeInterval = 1
     var pinger: SimplePing?
     var sendTimer: Timer?
     
+    init(hostname: String, ipAddress: String){
+        self.ipAddress = ipAddress
+        self.hostname = hostname
+    }
+    
     
     func start(forceIPv4: Bool, forceIPv6:Bool){
-        self.pingerWillStart()
+
         NSLog("Start")
         
         let pinger = SimplePing(hostName: self.hostname)
         self.pinger = pinger
+        
         
         
         if(forceIPv4 && !forceIPv6){
@@ -31,20 +38,18 @@ class PingController: NSObject, SimplePingDelegate{
         }
         pinger.delegate = self
         pinger.start()
+        self.simplePing(pinger: pinger, didStartWithAddress: Data(self.ipAddress.utf8) as NSData)
+        pinger.send(with: nil)
     }
     
-    
-    
+
     func stop(){
         NSLog("Stop")
         self.pinger?.stop()
         self.pinger = nil
-        
-        
         self.sendTimer?.invalidate()
         self.sendTimer = nil
-        
-        
+    
         self.pingerDidStop()
         
     }
@@ -54,11 +59,12 @@ class PingController: NSObject, SimplePingDelegate{
         }
         
     private func simplePing(pinger: SimplePing, didStartWithAddress address: NSData){
-        NSLog("pinging $@", PingController.displayAddress(address: address))
+        let ipAddressData = Data(ipAddress.utf8) as NSData
+        NSLog("pinging $@", PingMonitor.displayAddressForAddress(address: ipAddressData))
         self.sendPing()
-        
+
         assert(self.sendTimer == nil)
-        self.sendTimer = Timer.scheduledTimer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(PingController.sendPing), userInfo: nil, repeats: true)
+        self.sendTimer = Timer.scheduledTimer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(PingMonitor.sendPing), userInfo: nil, repeats: true)
     }
     
     private func simplePing(pinger:SimplePing, didFailWithError error: NSError){
@@ -84,7 +90,7 @@ class PingController: NSObject, SimplePingDelegate{
     
     
     
-    static func displayAddress(address: NSData) -> String{
+    static func displayAddressForAddress(address: NSData) -> String{
         var hostStr = [Int8](repeating: 0, count: Int(NI_MAXHOST))
         
         let sockAddr: UnsafePointer<sockaddr> = (address.bytes).assumingMemoryBound(to: sockaddr.self)
@@ -95,6 +101,7 @@ class PingController: NSObject, SimplePingDelegate{
         
         if success{
             result = String(cString: hostStr)
+            print(result)
         } else {
             result = "?"
         }

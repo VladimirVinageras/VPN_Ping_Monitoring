@@ -49,6 +49,7 @@ struct HostsView: View {
                                 hosts.append(newHost)
                                 isPresentingNewHostView = false
                                 newHostData = Host.Data()
+                                newHost.StartMonitoring()
                             }
                         }
                     }
