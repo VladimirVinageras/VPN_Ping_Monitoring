@@ -13,31 +13,27 @@ extension Host{
     
     struct Monitor{
         let MAX_FAILURE_PERMITTED = 5
-        var pingMonitor: PingMonitor
+        let HTTP_STRING = "https://"
+        
         private var failureCounter: Int = 0
-        private var isServeReachable: Bool = false
+        private var isServerReachable: Bool = false
         private var isMonitoring: Bool = false 
 
         var hostname: String = ""
         var ipAddress: String = ""
         var checkFrequency: Double = 5
-        var status: Status = .unreachable
         
         
-        init(hostname: String, ipAddress: String, checkFrequency: Int, status: Status){
+        
+        init(hostname: String, ipAddress: String, checkFrequency: Int){
+            self.hostname = hostname
             self.ipAddress = ipAddress
             self.checkFrequency = Double(checkFrequency)
-            self.status = status
-            self.pingMonitor = PingMonitor(hostname: self.hostname, ipAddress: self.ipAddress)
             }
         
-        func makePing(){ // TODO organizar las funciones y poner este codigo en su lugar 
+        func monitoringRequest(){
             Timer.scheduledTimer(withTimeInterval: checkFrequency, repeats: true){timer in
-              //  if pingMonitor == nil{
-               
-                    pingMonitor.start(forceIPv4: true, forceIPv6: false)
-                    
-                
+                 sendHTTPRequest()
                 if failureCounter >= 5 {
                     timer.invalidate()
                 }
@@ -45,18 +41,44 @@ extension Host{
         }
         
         func Start(){
-            pingMonitor.start(forceIPv4: true, forceIPv6: false)
+            
         }
         
         func Stop(){
             //change
         }
         
-       
+        
+        func sendHTTPRequest(){
+            let hostUrl: String = HTTP_STRING + self.hostname
+            
+            if let url = URL(string: hostUrl){
+                var request = URLRequest(url: url)
+                request.httpMethod = "HEAD"
+                URLSession(configuration: .default)
+                    .dataTask(with: request){(_, response, error) -> Void in
+                        guard error == nil else{
+                            NSLog("ERROR")
+                            
+                            return
+                        }
+                        guard (response as? HTTPURLResponse)?
+                            .statusCode == 200 else {
+                            NSLog("The host is down")
+                            
+                            return
+                    }
+                        NSLog("The server is ok")
+                        
+                    
+                    }
+                    .resume()
+            }
+        }
 }
+
     func StartMonitoring(){
-        let monitor: Monitor = Monitor(hostname: self.hostname, ipAddress: self.ipAddress, checkFrequency: self.checkFrequency, status: self.status)
-        monitor.makePing()
+       
     }
     
     func StopMonitoring(){
@@ -64,10 +86,4 @@ extension Host{
     }
     
     
-    
-    mutating func update(from monitor: Monitor){
-        
-            status = monitor.status
-        }
-
 }

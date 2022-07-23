@@ -38,7 +38,7 @@ class PingMonitor: NSObject, SimplePingDelegate{
         }
         pinger.delegate = self
         pinger.start()
-        self.simplePing(pinger: pinger, didStartWithAddress: Data(self.ipAddress.utf8) as NSData)
+        self.simplePing(pinger: pinger, didStartWithAddress: Data(self.ipAddress.utf8))
         pinger.send(with: nil)
     }
     
@@ -58,9 +58,8 @@ class PingMonitor: NSObject, SimplePingDelegate{
         self.pinger?.send(with: nil)
         }
         
-    private func simplePing(pinger: SimplePing, didStartWithAddress address: NSData){
-        let ipAddressData = Data(ipAddress.utf8) as NSData
-        NSLog("pinging $@", PingMonitor.displayAddressForAddress(address: ipAddressData))
+    private func simplePing(pinger: SimplePing, didStartWithAddress address: Data){
+        NSLog("pinging $@", PingMonitor.displayAddressForAddress(address: address as NSData))
         self.sendPing()
 
         assert(self.sendTimer == nil)
@@ -92,10 +91,17 @@ class PingMonitor: NSObject, SimplePingDelegate{
     
     static func displayAddressForAddress(address: NSData) -> String{
         var hostStr = [Int8](repeating: 0, count: Int(NI_MAXHOST))
+    
+        let sockAddr /*: UnsafePointer<sockaddr>*/ = (address.bytes).assumingMemoryBound(to: sockaddr.self)
         
-        let sockAddr: UnsafePointer<sockaddr> = (address.bytes).assumingMemoryBound(to: sockaddr.self)
-        
-        let success = getnameinfo(sockAddr, socklen_t(address.length), &hostStr, socklen_t(hostStr.count), nil, 0, NI_NUMERICHOST) == 0
+        let success = getnameinfo(
+            sockAddr,
+            socklen_t(address.length),
+            &hostStr,
+            socklen_t(hostStr.count),
+            nil,
+            0,
+            NI_NUMERICHOST) == 0
         
         let result: String
         
@@ -122,12 +128,13 @@ class PingMonitor: NSObject, SimplePingDelegate{
                 }
             }
         }
+    }
         if let result = error.localizedFailureReason{
             return result
-        }
+
     }
-        return error.localizedFailureReason ?? ""
-    }
+        return error.localizedDescription
+}
     
     func pingerWillStart(){}
     
