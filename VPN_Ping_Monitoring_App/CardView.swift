@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct CardView: View {
-    let host: Host
+    var host: Host
 
     var body: some View {
         VStack{
             VStack(alignment: .leading){
-                Text(host.hostname)
+                Text(host.name)
                     .font(.headline)
             }
             Spacer()
             VStack(alignment: .leading){
+                VStack(alignment: .center){
+                    Label("\(host.hostname)", systemImage: "network")
+                }
+                Spacer()
                 HStack{
-                    Label("\(host.ipAddress)", systemImage: "network")
+                    Label("\(host.ipAddress)", systemImage: "server.rack")
                 }
                 Spacer()
                 HStack{

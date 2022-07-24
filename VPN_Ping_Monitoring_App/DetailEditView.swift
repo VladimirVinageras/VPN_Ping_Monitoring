@@ -12,12 +12,17 @@ struct DetailEditView: View {
     
     var body: some View {
         Form{
+            Section(header: Text("Name")){
+                
+                TextField("\(data.name)", text: $data.name)
+                    .autocapitalization(.none)
+            }
             Section(header: Text("Host Name")){
                 
                 TextField("\(data.hostname)", text: $data.hostname)
                     .autocapitalization(.none)
             }
-            Section(header: Text("IP Address/ Domain")){
+            Section(header: Text("IP Address")){
                 TextField("\(data.ipAddress)", text: $data.ipAddress)
                     .autocapitalization(.none)
                     .keyboardType(.URL)

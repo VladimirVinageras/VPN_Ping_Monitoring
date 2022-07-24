@@ -12,6 +12,7 @@ import Foundation
 enum Status: String, Codable{
     case reachable
     case unreachable
+    case unknow
         
     func Status() -> String{
         switch self{
@@ -19,6 +20,8 @@ enum Status: String, Codable{
                 return NSLocalizedString("👍", comment: "Host connection status: Reachable")
         case .unreachable:
                 return NSLocalizedString("👎", comment: "Host conntection status: Unreachable")
+        case .unknow:
+            return NSLocalizedString("☹️", comment: "Something is wrong: Check provided data")
         }
     }
 }
