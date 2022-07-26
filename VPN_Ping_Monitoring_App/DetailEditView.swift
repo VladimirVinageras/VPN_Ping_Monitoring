@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailEditView: View {
     @Binding var data: Host.Data
     
+    
     var body: some View {
         Form{
             Section(header: Text("Name")){

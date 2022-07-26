@@ -18,13 +18,14 @@ struct HostsView: View {
         List{
             ForEach($hosts){ $host in
                 NavigationLink(destination: DetailView(host: $host)){
-            CardView(host: host)
+                    CardView(host: $host)
             }
         }
             .onChange(of: scenePhase){ phase in
                 if phase == .inactive {saveAction()}
             }
         }
+    
         .navigationTitle("Hosts")
         .toolbar{
             Button(action: {
@@ -49,7 +50,6 @@ struct HostsView: View {
                                 hosts.append(newHost)
                                 isPresentingNewHostView = false
                                 newHostData = Host.Data()
-                                newHost.monitor.monitoringServer()
                             }
                         }
                     }
@@ -61,10 +61,12 @@ struct HostsView: View {
   }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             HostsView(hosts: .constant(Host.sampleData), saveAction: {})
         }
     }
-}
+  }
+

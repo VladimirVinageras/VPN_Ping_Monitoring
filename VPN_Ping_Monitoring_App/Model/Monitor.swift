@@ -8,16 +8,15 @@
 import SwiftUI
 import Foundation
 
-extension Host{
+
     
     struct Monitor{
         let MAX_FAILURE_PERMITTED = 5
         let HTTP_STRING = "https://"
         
-        @State private var failureCounter: Int = 0
-        @State var isServerReachable: Bool = false
+ 
         @State var isMonitoring: Bool = false
-        @State var serverState: Status = .unreachable
+        @State var serverState: Status
         
         var hostname: String = ""
         var ipAddress: String = ""
@@ -26,35 +25,54 @@ extension Host{
         
         
         
-        init(hostname: String, ipAddress: String, checkFrequency: Int){
+        init(hostname: String, ipAddress: String, checkFrequency: Int, serverState: Status){
             self.hostname = hostname
             self.ipAddress = ipAddress
             self.checkFrequency = Double(checkFrequency)
+            self.serverState = serverState
             }
         
-        func monitoringServer() {
-            monitoringRequest()
+        init(serverState: Status){
+            self.serverState = serverState
         }
         
-        private func monitoringRequest(){
+        func monitoringHost(){
             isMonitoring = true
-            Timer.scheduledTimer(withTimeInterval: checkFrequency, repeats: true){ timer in
-                    serverState = sendHTTPRequest()
-                if  serverState != Status.reachable {
-                    failureCounter += 1
-                    isMonitoring = false
-                }
+            var failureCounter = 0
+            Timer.scheduledTimer(withTimeInterval: checkFrequency, repeats: true){ [self] timer in
                 
+                if !isHostReachable(){
+                    failureCounter += 1
+                    NSLog("\(failureCounter) It has to increase")
+                }
                 if failureCounter >= 5 {
                     timer.invalidate()
+                    isMonitoring = false
+                    NSLog("THE MONITORING HAS BEEN STOPED")
+                
+                
+             }
+           
+         }
+
+      }
+        
+         func isHostReachable()-> Bool{
+                self.serverState = self.sendHTTPRequest()
+                
+                if  serverState != Status.reachable {
+                    return false
                 }
+                 return true
+                
             }
           
-        }
+        
+    
         
       func sendHTTPRequest()-> Status{
             let hostUrl: String = HTTP_STRING + self.hostname
-          var serverState : Status = .unknow
+          var serverState : Status = .unknown
             
             if let url = URL(string: hostUrl){
                 var request = URLRequest(url: url)
@@ -62,18 +80,18 @@ extension Host{
                 URLSession(configuration: .default)
                     .dataTask(with: request){(_, response, error) -> Void in
                         guard error == nil else{
-                            NSLog("ERROR")
-                            serverState = .unknow
+                            NSLog("ERROR trying to reach server \(hostname)")
+                            serverState = .unknown
                             return
                         }
                         guard (response as? HTTPURLResponse)?
                             .statusCode == 200 else {
                             serverState = .unreachable
-                            NSLog("The host is down")
+                            NSLog("The server \(hostname) is down")
                             
                             return
                     }
-                        NSLog("The server is ok")
+                        NSLog("The server \(hostname) is ok")
                         serverState = .reachable
         
                     }
@@ -83,11 +101,10 @@ extension Host{
         }
     }
 
-    
+extension Host{
+
     var monitor: Monitor{
-        Monitor(hostname: hostname, ipAddress: hostname, checkFrequency: checkFrequency)
+        Monitor(hostname: hostname, ipAddress: hostname, checkFrequency: checkFrequency, serverState: status)
         }
     
-    
-
-}
+    }

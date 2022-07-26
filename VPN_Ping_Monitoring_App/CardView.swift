@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-    var host: Host
+    @Binding var host: Host
 
     var body: some View {
         VStack{
@@ -29,23 +29,47 @@ struct CardView: View {
                 HStack{
                     Label(" \(host.checkFrequency) seconds.", systemImage: "clock.arrow.2.circlepath")
                         .font(.caption)
-                
                 Spacer()
-            
-                Label("The server is \(host.status.Status()).",systemImage: "app.connected.to.app.below.fill")
-                        .font(.caption)
+                
+                    Label("The server is  \(host.monitor.serverState.Status()) .",systemImage: "app.connected.to.app.below.fill")
+                                .font(.caption)
+                        }
                 }
             }
         }
+        .onAppear{
+            host.monitor.monitoringHost()
+            }
     }
 }
+
+
+
 
 
 
 struct CardView_Previews: PreviewProvider {
-    static var host = Host.sampleData[0]
+
     static var previews: some View {
-        CardView(host: host)
+        CardView(host: .constant(Host.sampleData[0]))
             .previewLayout(.fixed(width: 400, height: 60))
     }
 }
+
+
+
+
+
+
+
+
+
+                        
+
+
+
+                 
+
+
+
+

@@ -14,8 +14,8 @@ struct Host: Identifiable, Codable {
     var name: String
     var hostname: String
     var ipAddress: String
-    var status: Status = .unreachable
     var checkFrequency: Int = 5
+    var status: Status
     
     init(id: UUID = UUID(), name: String, hostname: String, ipAddress: String, checkFrequency: Int, status: Status){
         self.id = id
@@ -36,7 +36,7 @@ extension Host{
         var hostname: String = ""
         var ipAddress: String = ""
         var checkFrequency: Int = 5
-        var status: Status = .unreachable
+        var status : Status = .unknown
     }
     
     
@@ -67,8 +67,8 @@ extension Host{
 
 extension Host{
     static let sampleData: [Host] =
-    [ Host(name: "Apple Site",hostname: "apple.com",  ipAddress: "17.253.144.10", checkFrequency: 30, status: .reachable),
-      Host(name: "Google Site", hostname: "google.com", ipAddress: "74.125.131.101", checkFrequency: 45, status: .unreachable),
-      Host(name: "VPN Dayron's Server", hostname: "remote.myusc.net" , ipAddress: "172.16.250.40", checkFrequency: 15, status: .reachable)
+    [ Host(name: "Apple Site",hostname: "apple.com",  ipAddress: "17.253.144.10", checkFrequency: 30 , status: .unknown),
+      Host(name: "Google Site", hostname: "google.com", ipAddress: "74.125.131.101", checkFrequency: 45, status: .unknown),
+      Host(name: "VPN Dayron's Server", hostname: "remote.myusc.net" , ipAddress: "172.16.250.40", checkFrequency: 15, status: .unknown)
     ]
 }
