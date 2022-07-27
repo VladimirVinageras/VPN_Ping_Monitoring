@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CardView: View {
+    
     @Binding var host: Host
+    @StateObject var monitor: Monitor
 
     var body: some View {
         VStack{
@@ -31,30 +33,28 @@ struct CardView: View {
                         .font(.caption)
                 Spacer()
                 
-                    Label("The server is  \(host.monitor.serverState.Status()) .",systemImage: "app.connected.to.app.below.fill")
-                                .font(.caption)
-                        }
+                    HostStatusView(monitor: monitor)
                 }
             }
         }
-        .onAppear{
-            host.monitor.monitoringHost()
+        .onAppear(){
+            if !host.monitor.isMonitoring{
+                host.monitor.monitoringHost()
+                monitor.updateServerStatus()
             }
+        }
     }
 }
-
-
-
-
-
 
 struct CardView_Previews: PreviewProvider {
 
     static var previews: some View {
-        CardView(host: .constant(Host.sampleData[0]))
-            .previewLayout(.fixed(width: 400, height: 60))
+        CardView(host: .constant(Host.sampleData[0]), monitor: Monitor.sampleMonitor)
+            .previewLayout(.sizeThatFits)
     }
 }
+
+        
 
 
 

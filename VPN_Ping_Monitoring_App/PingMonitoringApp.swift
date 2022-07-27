@@ -29,6 +29,7 @@ struct VPN_Ping_Monitoring_AppApp: App {
             .task{
                 do{
                     hostsStore.hosts = try await HostStore.load()
+    
                 }catch{
                     errorWrapper = ErrorWrapper(error: error, guidance: "This app will load sample data and continue")
                 }

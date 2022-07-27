@@ -13,12 +13,13 @@ struct HostsView: View {
     @State private var isPresentingNewHostView = false
     @State private var newHostData = Host.Data()
     let saveAction: ()-> Void
+
     
     var body: some View {
         List{
             ForEach($hosts){ $host in
                 NavigationLink(destination: DetailView(host: $host)){
-                    CardView(host: $host)
+                    CardView(host: $host, monitor: host.monitor)
             }
         }
             .onChange(of: scenePhase){ phase in
@@ -57,9 +58,9 @@ struct HostsView: View {
         }
         .onChange(of: scenePhase){ phase in
             if phase == .inactive {saveAction()}
+        }
     }
   }
-}
 
 
 struct ContentView_Previews: PreviewProvider {

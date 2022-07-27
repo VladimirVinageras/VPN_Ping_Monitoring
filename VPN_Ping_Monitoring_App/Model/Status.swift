@@ -21,7 +21,7 @@ enum Status: String, Codable{
         case .unreachable:
                 return NSLocalizedString("👎", comment: "Host conntection status: Unreachable")
         case .unknown:
-            return NSLocalizedString("☹️", comment: "Something is wrong: Check provided data")
+                return NSLocalizedString("☹️", comment: "Something is wrong: Check provided data")
         }
     }
 }

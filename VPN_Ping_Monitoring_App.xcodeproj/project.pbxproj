@@ -20,6 +20,7 @@
 		F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A822888A61C008F32BF /* ErrorWrapper.swift */; };
 		F9392A852888A639008F32BF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A842888A639008F32BF /* ErrorView.swift */; };
 		F9392A882888CB19008F32BF /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A872888CB19008F32BF /* Monitor.swift */; };
+		F9392A8E2890AD10008F32BF /* HostStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A8D2890AD10008F32BF /* HostStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F9392A822888A61C008F32BF /* ErrorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 		F9392A842888A639008F32BF /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F9392A872888CB19008F32BF /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		F9392A8D2890AD10008F32BF /* HostStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				F9392A6328861A31008F32BF /* Assets.xcassets */,
 				F9392A6528861A31008F32BF /* Preview Content */,
 				F9392A7828875C7E008F32BF /* CardView.swift */,
+				F9392A8D2890AD10008F32BF /* HostStatusView.swift */,
 				F9392A6128861A31008F32BF /* HostsView.swift */,
 				F9392A7C2887746B008F32BF /* DetailView.swift */,
 				F9392A80288893DF008F32BF /* DetailEditView.swift */,
@@ -181,6 +184,7 @@
 				F9392A7728875878008F32BF /* Host.swift in Sources */,
 				F9392A7B2887655B008F32BF /* Status.swift in Sources */,
 				F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */,
+				F9392A8E2890AD10008F32BF /* HostStatusView.swift in Sources */,
 				F9392A852888A639008F32BF /* ErrorView.swift in Sources */,
 				F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */,
 				F9392A7928875C7E008F32BF /* CardView.swift in Sources */,

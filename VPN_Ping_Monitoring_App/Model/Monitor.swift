@@ -10,17 +10,19 @@ import Foundation
 
 
     
-    struct Monitor{
-        let MAX_FAILURE_PERMITTED = 5
-        let HTTP_STRING = "https://"
+class Monitor: ObservableObject{
+        var MAX_FAILURE_PERMITTED = 5
+        var HTTP_STRING = "https://"
         
  
-        @State var isMonitoring: Bool = false
-        @State var serverState: Status
-        
+        @Published var isMonitoring: Bool = false
+        @Published var serverState: Status
+        @Published var statusMessage: String
+    
         var hostname: String = ""
         var ipAddress: String = ""
         var checkFrequency: Double = 5
+    
         
         
         
@@ -30,11 +32,22 @@ import Foundation
             self.ipAddress = ipAddress
             self.checkFrequency = Double(checkFrequency)
             self.serverState = serverState
+            statusMessage = serverState.Status()
             }
         
         init(serverState: Status){
             self.serverState = serverState
+            statusMessage = serverState.Status()
         }
+    
+    init(){
+        self.hostname = ""
+        self.ipAddress = ""
+        self.checkFrequency = 0
+        self.serverState = Status.unknown
+        statusMessage = ""
+    }
+    
         
         func monitoringHost(){
             isMonitoring = true
@@ -49,12 +62,9 @@ import Foundation
                     timer.invalidate()
                     isMonitoring = false
                     NSLog("THE MONITORING HAS BEEN STOPED")
-                
-                
              }
            
          }
-
       }
         
          func isHostReachable()-> Bool{
@@ -80,18 +90,18 @@ import Foundation
                 URLSession(configuration: .default)
                     .dataTask(with: request){(_, response, error) -> Void in
                         guard error == nil else{
-                            NSLog("ERROR trying to reach server \(hostname)")
+                            NSLog("ERROR trying to reach server \(self.hostname)")
                             serverState = .unknown
                             return
                         }
                         guard (response as? HTTPURLResponse)?
                             .statusCode == 200 else {
                             serverState = .unreachable
-                            NSLog("The server \(hostname) is down")
+                            NSLog("The server \(self.hostname) is down")
                             
                             return
                     }
-                        NSLog("The server \(hostname) is ok")
+                        NSLog("The server \(self.hostname) is ok")
                         serverState = .reachable
         
                     }
@@ -101,10 +111,20 @@ import Foundation
         }
     }
 
+extension Monitor{
+    static let sampleMonitor : Monitor = Monitor(serverState: Status.unknown)
+    
+    func updateServerStatus(){
+        statusMessage = serverState.Status()
+    }
+}
+
 extension Host{
 
     var monitor: Monitor{
         Monitor(hostname: hostname, ipAddress: hostname, checkFrequency: checkFrequency, serverState: status)
+        
+       
         }
     
     }
