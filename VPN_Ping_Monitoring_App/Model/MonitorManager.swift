@@ -17,7 +17,10 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
    // var monitor: Monitor
    @Published var checkFrequency: Int = 5
    @Published var hostStatusMessage: String = ""
-
+    private var hostStatus: Status = .unknown
+    private var failureCounter: Int = 0
+    private var isMonitoring: Bool = false
+    
     init(id: UUID = UUID()){
         self.id = id
         host = Host.sampleData[0]
@@ -25,35 +28,36 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     }
 
     func monitoringHost(){
-        var failureCounter = 0
+        if (isMonitoring == false){
+        hostStatus = checkingHostStatus()
+        guard hostStatus == .reachable else {return}
+           failureCounter = 0
+           isMonitoring = true
+        
         Timer.scheduledTimer(withTimeInterval: TimeInterval(checkFrequency), repeats: true){ [self] timer in
-            if !isHostReachable(){
+            hostStatus = checkingHostStatus()
+            if hostStatus != Status.reachable{
                 failureCounter += 1
                 NSLog("\(failureCounter) It has to increase")
-            } else{
-            
+            } else {
+                failureCounter = 0
             }
             if failureCounter >= MAX_FAILURE_PERMITTED {
                 timer.invalidate()
-                
+                isMonitoring = false
                 NSLog("THE MONITORING HAS BEEN STOPED")
             }
-            
+            hostStatusMessage = hostStatus.Status()
         }
+      }
     }
     
-    func isHostReachable()-> Bool{
-           
-           if  self.sendHTTPRequest() != Status.reachable {
-               return false
-           }
-            return true
-           
+    func checkingHostStatus()-> Status{
+            return sendHTTPRequest()
        }
     
     func sendHTTPRequest()-> Status{
         let hostUrl: String = HTTP_STRING + self.host.hostname
-             var serverStatus : Status = .unknown
                
                if let url = URL(string: hostUrl){
                    var request = URLRequest(url: url)
@@ -62,25 +66,33 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
                        .dataTask(with: request){ [self](_, response, error) -> Void in
                            guard error == nil else{
                                NSLog("ERROR trying to reach server \(host.hostname)")
-                               serverStatus = .unknown
+                               hostStatus = .unknown
                                return
                            }
                            guard (response as? HTTPURLResponse)?
                                .statusCode == 200 else {
-                               serverStatus = .unreachable
+                               hostStatus = .unreachable
                                NSLog("The server \(host.hostname) is down")
                                
                                return
                        }
                            NSLog("The server \(host.hostname) is ok")
-                           serverStatus = .reachable
+                           hostStatus = .reachable
            
                        }
                        .resume()
                }
-             hostStatusMessage = serverStatus.Status()
-             return serverStatus
+             hostStatusMessage = hostStatus.Status()
+             return hostStatus
            }
+    
+    
+    func refresh(){
+        failureCounter = 0
+        monitoringHost()
+        }
+    
+
     
     init(data: ManagerData){
         id = UUID()

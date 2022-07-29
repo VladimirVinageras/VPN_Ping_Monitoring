@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF7C3AFC-BA5D-49B6-834F-2C618D72C2EB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/Model/Monitor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "66C84662-8D80-4099-9AA9-014866EC3D94"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -34,54 +18,6 @@
             endingLineNumber = "35"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9A529DDB-6D82-4F1D-8627-E9EBB09C8F99"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/CardView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "05167059-E0B7-4D90-ACF5-3109B8F33435"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/CardView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1929A1D1-F0E2-4686-A620-064A8E2E2765"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/HostStatusView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "unknown"
-            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -103,80 +39,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6A35C953-5BC5-4DB5-8B65-A676BC7635D1"
+            uuid = "537A5DA8-3467-4C56-85C3-5328A47C974B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/HostStatusView.swift"
+            filePath = "VPN_Ping_Monitoring_App/Model/MonitorManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "6A35C953-5BC5-4DB5-8B65-A676BC7635D1 - bcf4bd8708762308"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of VPN_Ping_Monitoring_App.HostStatusView.monitor : VPN_Ping_Monitoring_App.Monitor"
-                  moduleName = "VPN_Ping_Monitoring_App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vladimirvinageras/Desktop/SWIFT%20DEV/Vpn_Ping_Monitoring/VPN_Ping_Monitoring_App/VPN_Ping_Monitoring_App/HostStatusView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "6A35C953-5BC5-4DB5-8B65-A676BC7635D1 - b9e4cc33213ebd50"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "VPN_Ping_Monitoring_App.HostStatusView.monitor.getter : VPN_Ping_Monitoring_App.Monitor"
-                  moduleName = "VPN_Ping_Monitoring_App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vladimirvinageras/Desktop/SWIFT%20DEV/Vpn_Ping_Monitoring/VPN_Ping_Monitoring_App/VPN_Ping_Monitoring_App/HostStatusView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "132">
-               </Location>
-               <Location
-                  uuid = "6A35C953-5BC5-4DB5-8B65-A676BC7635D1 - ac426038281bb339"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "VPN_Ping_Monitoring_App.HostStatusView.$monitor.getter : SwiftUI.ObservedObject&lt;VPN_Ping_Monitoring_App.Monitor&gt;.Wrapper"
-                  moduleName = "VPN_Ping_Monitoring_App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vladimirvinageras/Desktop/SWIFT%20DEV/Vpn_Ping_Monitoring/VPN_Ping_Monitoring_App/VPN_Ping_Monitoring_App/HostStatusView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "132">
-               </Location>
-            </Locations>
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "monitoringHost()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "86C6776E-1EB6-4AEA-9E4B-EB97D494FA22"
-            shouldBeEnabled = "No"
+            uuid = "4A0FF504-5ACF-4364-882E-5658DF6951D7"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VPN_Ping_Monitoring_App/Model/Monitor.swift"
+            filePath = "VPN_Ping_Monitoring_App/Model/MonitorManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "monitoringHost()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct VPN_Ping_Monitoring_AppApp: App {
-    @StateObject var monitorManagerStore = MonitorManagerStore()
+    @StateObject private var monitorManagerStore = MonitorManagerStore()
     @State private var errorWrapper: ErrorWrapper?
     
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            NavigationView<HostsView>{
                 HostsView(monitorManagers: $monitorManagerStore.monitorManagers){
                     Task{
                         do{
@@ -40,5 +40,4 @@ struct VPN_Ping_Monitoring_AppApp: App {
       }
     }
 }
-
 

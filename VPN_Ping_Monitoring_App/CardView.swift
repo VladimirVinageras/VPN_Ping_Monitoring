@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    @Binding var monitorManager: MonitorManager
+    @ObservedObject var monitorManager: MonitorManager
     
     var body: some View {
         VStack{
@@ -20,19 +20,19 @@ struct CardView: View {
             Spacer()
             VStack(alignment: .leading){
                 VStack(alignment: .center){
-                    Label("\($monitorManager.host.hostname)", systemImage: "network")
+                    Label("\(monitorManager.host.hostname)", systemImage: "network")
                 }
                 Spacer()
                 HStack{
-                    Label("\($monitorManager.host.ipAddress)", systemImage: "server.rack")
+                    Label("\(monitorManager.host.ipAddress)", systemImage: "server.rack")
                 }
                 Spacer()
                 HStack{
-                    Label(" \($monitorManager.checkFrequency) seconds.", systemImage: "clock.arrow.2.circlepath")
+                    Label(" \(monitorManager.checkFrequency) seconds.", systemImage: "clock.arrow.2.circlepath")
                         .font(.caption)
                 Spacer()
                 
-                    Label("The server is  \($monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
+                    Label("The server is  \(monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
                                 .font(.caption)
                 }
             }
@@ -48,7 +48,7 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
 
     static var previews: some View {
-        CardView(monitorManager: .constant(MonitorManager.sampleMonitorManager))
+        CardView(monitorManager: MonitorManager.sampleMonitorManager)
             .previewLayout(.sizeThatFits)
     }
 }

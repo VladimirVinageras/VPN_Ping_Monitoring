@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct HostsView: View {
-    @ObservedObject private var monitorManagers: [MonitorManager]
+    @Binding var monitorManagers: [MonitorManager]
     @Environment (\.scenePhase) private var scenePhase
     @State private var isPresentingNewHostView = false
     @State private var newMonitorManagerData = MonitorManager.ManagerData()
     let saveAction: ()-> Void
-
-    
     var body: some View {
         List{
             ForEach($monitorManagers){ $monitorManager in
                 NavigationLink(destination: DetailView(monitorManager: $monitorManager)){
-                    CardView(monitorManager: $monitorManager)
+                    CardView(monitorManager: monitorManager)
             }
         }
             .onChange(of: scenePhase){ phase in
@@ -29,11 +27,18 @@ struct HostsView: View {
     
         .navigationTitle("Hosts")
         .toolbar{
-            Button(action: {
-                isPresentingNewHostView = true
-            }){
-                Image(systemName: "plus")
+            ToolbarItem(placement: .confirmationAction){
+                Button(action: {
+                    isPresentingNewHostView = true
+                }){
+                    Image(systemName: "plus")
+                    }
             }
+            ToolbarItem(placement: .cancellationAction){
+                Button(action:refreshAction){
+                    Image(systemName: "arrow.clockwise")
+                }
+           }
         }
         .sheet(isPresented: $isPresentingNewHostView){
             NavigationView{
@@ -65,10 +70,29 @@ struct HostsView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            HostsView(monitorManagers: [MonitorManager.sampleMonitorManager],saveAction: {})
+            HostsView(monitorManagers: .constant([MonitorManager.sampleMonitorManager]),saveAction: {})
         }
     }
   }
+
+
+
+private extension HostsView{
+    var refreshAction: () -> Void {
+            return {
+                monitorManagers.forEach { monitorManager in
+                    monitorManager.refresh()
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 
