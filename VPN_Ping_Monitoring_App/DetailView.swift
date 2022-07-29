@@ -8,42 +8,42 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Binding var host: Host
-    @State private var data = Host.Data()
+    @Binding var monitorManager: MonitorManager
+    @State private var data = MonitorManager.ManagerData()
     @State private var isPresentingEditView = false
     
     
     var body: some View {
         List{
             Section(header: Text("Host Name")){
-                Label("\(host.hostname)", systemImage: "network")
+                Label("\(monitorManager.host.hostname)", systemImage: "network")
                     .font(.headline)
             }
             Section(header: Text("IP Address/ Domain")){
-                Label("\(host.ipAddress)", systemImage: "network")
+                Label("\(monitorManager.host.ipAddress)", systemImage: "network")
                     .font(.headline)
             }
             Section(header: Text("Monitoring Frequency")){
-                Label("\(host.checkFrequency)", systemImage: "clock.arrow.2.circlepath")
+                Label("\(monitorManager.checkFrequency)", systemImage: "clock.arrow.2.circlepath")
                     .font(.headline)
             }
             Section(header: Text("Status")){
-                Label("\(host.status.Status())", systemImage: "app.connected.to.app.below.fill")
+                Label("\(monitorManager.hostStatusMessage)", systemImage: "app.connected.to.app.below.fill")
                     .font(.headline)
             }
 
         }
-        .navigationTitle(host.hostname)
+        .navigationTitle(monitorManager.host.hostname)
         .toolbar{
             Button("Edit"){
                 isPresentingEditView = true
-                data = host.data
+                data = monitorManager.data
             }
         }
         .sheet(isPresented: $isPresentingEditView){
             NavigationView{
                 DetailEditView(data: $data)
-                    .navigationTitle(host.hostname)
+                    .navigationTitle(monitorManager.host.hostname)
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction){
                             Button("Cancel"){
@@ -53,7 +53,7 @@ struct DetailView: View {
                         ToolbarItem(placement: .confirmationAction){
                             Button("Done"){
                                 isPresentingEditView = false
-                                host.update(from: data)
+                                monitorManager.update(from: data)
                             }
                         }
                     }
@@ -62,9 +62,8 @@ struct DetailView: View {
         }
     }
 }
-
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(host: .constant(Host.sampleData[0]))
+        DetailView(monitorManager: .constant(MonitorManager.sampleMonitorManager))
     }
 }

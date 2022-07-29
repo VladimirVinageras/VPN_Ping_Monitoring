@@ -9,47 +9,46 @@ import SwiftUI
 
 struct CardView: View {
     
-    @Binding var host: Host
-    @StateObject var monitor: Monitor
-
+    @Binding var monitorManager: MonitorManager
+    
     var body: some View {
         VStack{
             VStack(alignment: .leading){
-                Text(host.name)
+                Text(monitorManager.host.name)
                     .font(.headline)
             }
             Spacer()
             VStack(alignment: .leading){
                 VStack(alignment: .center){
-                    Label("\(host.hostname)", systemImage: "network")
+                    Label("\($monitorManager.host.hostname)", systemImage: "network")
                 }
                 Spacer()
                 HStack{
-                    Label("\(host.ipAddress)", systemImage: "server.rack")
+                    Label("\($monitorManager.host.ipAddress)", systemImage: "server.rack")
                 }
                 Spacer()
                 HStack{
-                    Label(" \(host.checkFrequency) seconds.", systemImage: "clock.arrow.2.circlepath")
+                    Label(" \($monitorManager.checkFrequency) seconds.", systemImage: "clock.arrow.2.circlepath")
                         .font(.caption)
                 Spacer()
                 
-                    HostStatusView(monitor: monitor)
+                    Label("The server is  \($monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
+                                .font(.caption)
                 }
             }
         }
         .onAppear(){
-            if !host.monitor.isMonitoring{
-                host.monitor.monitoringHost()
-                monitor.updateServerStatus()
+            monitorManager.monitoringHost()
+                
             }
         }
     }
-}
+
 
 struct CardView_Previews: PreviewProvider {
 
     static var previews: some View {
-        CardView(host: .constant(Host.sampleData[0]), monitor: Monitor.sampleMonitor)
+        CardView(monitorManager: .constant(MonitorManager.sampleMonitorManager))
             .previewLayout(.sizeThatFits)
     }
 }

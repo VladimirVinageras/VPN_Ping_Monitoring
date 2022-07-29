@@ -4,12 +4,12 @@
 //
 //  Created by Vladimir Vinageras on 27.07.2022.
 //
-
+/*
 import SwiftUI
 
 struct HostStatusView: View {
   
-    @ObservedObject var monitor : Monitor
+    var monitor : Monitor
     var body: some View {
       
         Label("The server is  \(monitor.statusMessage)",systemImage: "app.connected.to.app.below.fill")
@@ -26,4 +26,4 @@ struct HostStatusView_Previews: PreviewProvider {
 }
 
 
-
+*/
