@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct DetailEditView: View {
-    @Binding var data: Host.Data
+    @Binding var data: MonitorManager.ManagerData
     
     
     var body: some View {
         Form{
             Section(header: Text("Name")){
                 
-                TextField("\(data.name)", text: $data.name)
+                TextField("\(data.host.name)", text: $data.host.name)
                     .autocapitalization(.none)
             }
             Section(header: Text("Host Name")){
                 
-                TextField("\(data.hostname)", text: $data.hostname)
+                TextField("\(data.host.hostname)", text: $data.host.hostname)
                     .autocapitalization(.none)
             }
             Section(header: Text("IP Address")){
-                TextField("\(data.ipAddress)", text: $data.ipAddress)
+                TextField("\(data.host.ipAddress)", text: $data.host.ipAddress)
                     .autocapitalization(.none)
                     .keyboardType(.URL)
                 
@@ -38,7 +38,8 @@ struct DetailEditView: View {
 
 struct DetailViewEdit_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView(data: .constant(Host.sampleData[0].data))
+        DetailEditView(data: .constant(MonitorManager.sampleMonitorManager.data))
     }
 }
+
 

@@ -9,17 +9,18 @@ import SwiftUI
 
 @main
 struct VPN_Ping_Monitoring_AppApp: App {
-    @StateObject var hostsStore = HostStore()
+    @StateObject private var monitorManagerStore = MonitorManagerStore()
     @State private var errorWrapper: ErrorWrapper?
+    @Environment (\.scenePhase) var scenePhase
     
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                HostsView(hosts: $hostsStore.hosts){
+            NavigationView<HostsView>{
+                HostsView(monitorManagers: $monitorManagerStore.monitorManagers){
                     Task{
                         do{
-                            try await HostStore.save(hosts: hostsStore.hosts)
+                            try await MonitorManagerStore.save(monitorManagers: monitorManagerStore.monitorManagers)
                         }catch{
                             errorWrapper = ErrorWrapper(error: error, guidance: "Try again later")
                         }
@@ -28,15 +29,28 @@ struct VPN_Ping_Monitoring_AppApp: App {
             }
             .task{
                 do{
-                    hostsStore.hosts = try await HostStore.load()
+                monitorManagerStore.monitorManagers = try await MonitorManagerStore.load()
     
                 }catch{
                     errorWrapper = ErrorWrapper(error: error, guidance: "This app will load sample data and continue")
                 }
             }
-            .sheet(item: $errorWrapper, onDismiss: {hostsStore.hosts = Host.sampleData}){wrapper in
+            .sheet(item: $errorWrapper, onDismiss: {monitorManagerStore.monitorManagers[0] = MonitorManager.sampleMonitorManager}){wrapper in
                 ErrorView(errorWrapper: wrapper)
+            }
+            
+            .onChange(of: scenePhase){ (phase) in
+                if phase == .background{
+                    Task{
+                        do{
+                            try await monitorManagerStore.refresh()
+                        }catch{
+                            errorWrapper = ErrorWrapper(error: error, guidance: "Try again later")
+                        }
+                    }
+                }
             }
       }
     }
 }
+

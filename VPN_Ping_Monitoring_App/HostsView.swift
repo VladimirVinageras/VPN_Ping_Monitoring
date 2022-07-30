@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct HostsView: View {
-    @Binding var hosts: [Host]
+    @ObservedObject var notificationManager = LocalNotificationManager()
+    @Binding var monitorManagers: [MonitorManager]
     @Environment (\.scenePhase) private var scenePhase
     @State private var isPresentingNewHostView = false
-    @State private var newHostData = Host.Data()
+    @State private var newMonitorManagerData = MonitorManager.ManagerData()
     let saveAction: ()-> Void
-
-    
     var body: some View {
         List{
-            ForEach($hosts){ $host in
-                NavigationLink(destination: DetailView(host: $host)){
-                    CardView(host: $host, monitor: host.monitor)
+            ForEach($monitorManagers){ $monitorManager in
+                NavigationLink(destination: DetailView(monitorManager: $monitorManager)){
+                    CardView(monitorManager: monitorManager)
             }
         }
             .onChange(of: scenePhase){ phase in
@@ -29,45 +28,64 @@ struct HostsView: View {
     
         .navigationTitle("Hosts")
         .toolbar{
-            Button(action: {
-                isPresentingNewHostView = true
-            }){
-                Image(systemName: "plus")
+            ToolbarItem(placement: .confirmationAction){
+                Button(action: {
+                    isPresentingNewHostView = true
+                }){
+                    Image(systemName: "plus")
+                    }
             }
+            ToolbarItem(placement: .cancellationAction){
+                Button(action:refreshAction){
+                    Image(systemName: "arrow.clockwise")
+                }
+           }
         }
         .sheet(isPresented: $isPresentingNewHostView){
             NavigationView{
-                DetailEditView(data: $newHostData)
+                DetailEditView(data: $newMonitorManagerData)
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction){
                             Button("Dismiss"){
                                 isPresentingNewHostView = false
-                                newHostData = Host.Data()
+                                newMonitorManagerData = MonitorManager.ManagerData()
                             }
                         }
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
-                                let newHost = Host(data: newHostData)
-                                hosts.append(newHost)
+                                let newMonitorManager = MonitorManager(data: newMonitorManagerData)
+                                monitorManagers.append(newMonitorManager)
                                 isPresentingNewHostView = false
-                                newHostData = Host.Data()
+                                newMonitorManagerData = MonitorManager.ManagerData()
                             }
                         }
                     }
             }
         }
         .onChange(of: scenePhase){ phase in
-            if phase == .inactive {saveAction()}
+            if phase == .inactive {
+                saveAction()
+            }
         }
     }
   }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            HostsView(hosts: .constant(Host.sampleData), saveAction: {})
+            HostsView(monitorManagers: .constant([MonitorManager.sampleMonitorManager]),saveAction: {})
         }
     }
   }
 
+
+
+private extension HostsView{
+    var refreshAction: () -> Void {
+            return {
+                monitorManagers.forEach { monitorManager in
+                    monitorManager.refresh()
+            }
+        }
+    }
+}

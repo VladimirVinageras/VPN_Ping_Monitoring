@@ -15,12 +15,12 @@
 		F9392A7928875C7E008F32BF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7828875C7E008F32BF /* CardView.swift */; };
 		F9392A7B2887655B008F32BF /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7A2887655B008F32BF /* Status.swift */; };
 		F9392A7D2887746B008F32BF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7C2887746B008F32BF /* DetailView.swift */; };
-		F9392A7F288777A5008F32BF /* HostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7E288777A5008F32BF /* HostStore.swift */; };
+		F9392A7F288777A5008F32BF /* MonitorManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A7E288777A5008F32BF /* MonitorManagerStore.swift */; };
 		F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A80288893DF008F32BF /* DetailEditView.swift */; };
 		F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A822888A61C008F32BF /* ErrorWrapper.swift */; };
 		F9392A852888A639008F32BF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A842888A639008F32BF /* ErrorView.swift */; };
-		F9392A882888CB19008F32BF /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A872888CB19008F32BF /* Monitor.swift */; };
-		F9392A8E2890AD10008F32BF /* HostStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A8D2890AD10008F32BF /* HostStatusView.swift */; };
+		F9392A902892F1D9008F32BF /* MonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A8F2892F1D9008F32BF /* MonitorManager.swift */; };
+		F958B7D428949C50008989BD /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958B7D328949C50008989BD /* LocalNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,12 +33,12 @@
 		F9392A7828875C7E008F32BF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F9392A7A2887655B008F32BF /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		F9392A7C2887746B008F32BF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		F9392A7E288777A5008F32BF /* HostStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStore.swift; sourceTree = "<group>"; };
+		F9392A7E288777A5008F32BF /* MonitorManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorManagerStore.swift; sourceTree = "<group>"; };
 		F9392A80288893DF008F32BF /* DetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEditView.swift; sourceTree = "<group>"; };
 		F9392A822888A61C008F32BF /* ErrorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 		F9392A842888A639008F32BF /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		F9392A872888CB19008F32BF /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
-		F9392A8D2890AD10008F32BF /* HostStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostStatusView.swift; sourceTree = "<group>"; };
+		F9392A8F2892F1D9008F32BF /* MonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorManager.swift; sourceTree = "<group>"; };
+		F958B7D328949C50008989BD /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,6 @@
 				F9392A6328861A31008F32BF /* Assets.xcassets */,
 				F9392A6528861A31008F32BF /* Preview Content */,
 				F9392A7828875C7E008F32BF /* CardView.swift */,
-				F9392A8D2890AD10008F32BF /* HostStatusView.swift */,
 				F9392A6128861A31008F32BF /* HostsView.swift */,
 				F9392A7C2887746B008F32BF /* DetailView.swift */,
 				F9392A80288893DF008F32BF /* DetailEditView.swift */,
@@ -99,8 +98,9 @@
 				F9392A822888A61C008F32BF /* ErrorWrapper.swift */,
 				F9392A7628875878008F32BF /* Host.swift */,
 				F9392A7A2887655B008F32BF /* Status.swift */,
-				F9392A7E288777A5008F32BF /* HostStore.swift */,
-				F9392A872888CB19008F32BF /* Monitor.swift */,
+				F9392A7E288777A5008F32BF /* MonitorManagerStore.swift */,
+				F9392A8F2892F1D9008F32BF /* MonitorManager.swift */,
+				F958B7D328949C50008989BD /* LocalNotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,17 +177,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9392A6228861A31008F32BF /* HostsView.swift in Sources */,
-				F9392A882888CB19008F32BF /* Monitor.swift in Sources */,
 				F9392A7D2887746B008F32BF /* DetailView.swift in Sources */,
-				F9392A7F288777A5008F32BF /* HostStore.swift in Sources */,
+				F9392A7F288777A5008F32BF /* MonitorManagerStore.swift in Sources */,
 				F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */,
 				F9392A7728875878008F32BF /* Host.swift in Sources */,
 				F9392A7B2887655B008F32BF /* Status.swift in Sources */,
+				F958B7D428949C50008989BD /* LocalNotificationManager.swift in Sources */,
 				F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */,
-				F9392A8E2890AD10008F32BF /* HostStatusView.swift in Sources */,
 				F9392A852888A639008F32BF /* ErrorView.swift in Sources */,
 				F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */,
 				F9392A7928875C7E008F32BF /* CardView.swift in Sources */,
+				F9392A902892F1D9008F32BF /* MonitorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
