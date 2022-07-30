@@ -14,17 +14,18 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     
     var id: UUID
    @Published var host: Host
-   // var monitor: Monitor
+ 
    @Published var checkFrequency: Int = 5
    @Published var hostStatusMessage: String = ""
     private var hostStatus: Status = .unknown
     private var failureCounter: Int = 0
     private var isMonitoring: Bool = false
+    private var counter: Int = 0
     
     init(id: UUID = UUID()){
         self.id = id
         host = Host.sampleData[0]
-     //   monitor = Monitor.sampleMonitor
+ 
     }
 
     func monitoringHost(){
@@ -58,6 +59,7 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     
     func sendHTTPRequest()-> Status{
         let hostUrl: String = HTTP_STRING + self.host.hostname
+       
                
                if let url = URL(string: hostUrl){
                    var request = URLRequest(url: url)
@@ -77,6 +79,8 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
                                return
                        }
                            NSLog("The server \(host.hostname) is ok")
+                           NSLog("The server \(host.hostname) has been checked \(counter) times ")
+                           counter += 1
                            hostStatus = .reachable
            
                        }
@@ -97,7 +101,6 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     init(data: ManagerData){
         id = UUID()
         host = data.host
-     //   monitor = data.monitor
         checkFrequency = data.checkFrequency
     }
     
@@ -148,19 +151,17 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
 extension MonitorManager{
     struct ManagerData{
         var host: Host = Host.sampleData[0]
-     //   var monitor: Monitor = Monitor.sampleMonitor
         var checkFrequency: Int = 5
         
     }
     
     
     var data: ManagerData{
-        ManagerData(host: host, /*monitor: monitor,*/ checkFrequency: checkFrequency)
+        ManagerData(host: host, checkFrequency: checkFrequency)
     }
     
     func update(from data: ManagerData){
         host = data.host
-     //   monitor = data.monitor
         checkFrequency = data.checkFrequency
     }
     

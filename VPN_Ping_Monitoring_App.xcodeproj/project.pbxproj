@@ -20,6 +20,7 @@
 		F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A822888A61C008F32BF /* ErrorWrapper.swift */; };
 		F9392A852888A639008F32BF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A842888A639008F32BF /* ErrorView.swift */; };
 		F9392A902892F1D9008F32BF /* MonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9392A8F2892F1D9008F32BF /* MonitorManager.swift */; };
+		F958B7D428949C50008989BD /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F958B7D328949C50008989BD /* LocalNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F9392A822888A61C008F32BF /* ErrorWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 		F9392A842888A639008F32BF /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F9392A8F2892F1D9008F32BF /* MonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorManager.swift; sourceTree = "<group>"; };
+		F958B7D328949C50008989BD /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				F9392A7A2887655B008F32BF /* Status.swift */,
 				F9392A7E288777A5008F32BF /* MonitorManagerStore.swift */,
 				F9392A8F2892F1D9008F32BF /* MonitorManager.swift */,
+				F958B7D328949C50008989BD /* LocalNotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				F9392A832888A61C008F32BF /* ErrorWrapper.swift in Sources */,
 				F9392A7728875878008F32BF /* Host.swift in Sources */,
 				F9392A7B2887655B008F32BF /* Status.swift in Sources */,
+				F958B7D428949C50008989BD /* LocalNotificationManager.swift in Sources */,
 				F9392A81288893DF008F32BF /* DetailEditView.swift in Sources */,
 				F9392A852888A639008F32BF /* ErrorView.swift in Sources */,
 				F9392A6028861A31008F32BF /* PingMonitoringApp.swift in Sources */,

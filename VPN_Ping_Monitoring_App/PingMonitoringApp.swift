@@ -11,6 +11,7 @@ import SwiftUI
 struct VPN_Ping_Monitoring_AppApp: App {
     @StateObject private var monitorManagerStore = MonitorManagerStore()
     @State private var errorWrapper: ErrorWrapper?
+    @Environment (\.scenePhase) var scenePhase
     
     
     var body: some Scene {
@@ -36,6 +37,18 @@ struct VPN_Ping_Monitoring_AppApp: App {
             }
             .sheet(item: $errorWrapper, onDismiss: {monitorManagerStore.monitorManagers[0] = MonitorManager.sampleMonitorManager}){wrapper in
                 ErrorView(errorWrapper: wrapper)
+            }
+            
+            .onChange(of: scenePhase){ (phase) in
+                if phase == .background{
+                    Task{
+                        do{
+                            try await monitorManagerStore.refresh()
+                        }catch{
+                            errorWrapper = ErrorWrapper(error: error, guidance: "Try again later")
+                        }
+                    }
+                }
             }
       }
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HostsView: View {
+    @ObservedObject var notificationManager = LocalNotificationManager()
     @Binding var monitorManagers: [MonitorManager]
     @Environment (\.scenePhase) private var scenePhase
     @State private var isPresentingNewHostView = false
@@ -62,7 +63,9 @@ struct HostsView: View {
             }
         }
         .onChange(of: scenePhase){ phase in
-            if phase == .inactive {saveAction()}
+            if phase == .inactive {
+                saveAction()
+            }
         }
     }
   }
@@ -86,13 +89,3 @@ private extension HostsView{
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
