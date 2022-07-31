@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HostsView: View {
-    @ObservedObject var notificationManager = LocalNotificationManager()
+   
     @Binding var monitorManagers: [MonitorManager]
     @Environment (\.scenePhase) private var scenePhase
     @State private var isPresentingNewHostView = false

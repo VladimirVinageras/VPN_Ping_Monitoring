@@ -15,22 +15,26 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     var id: UUID
    @Published var host: Host
  
-   @Published var checkFrequency: Int = 5
-   @Published var hostStatusMessage: String = ""
-    private var hostStatus: Status = .unknown
+    @Published var checkFrequency: Int = 5
+    @Published var hostStatusMessage: String = ""
+    var isMonitoring: Bool = false
+    private var hostStatus: Status = .reachable
     private var failureCounter: Int = 0
-    private var isMonitoring: Bool = false
     private var counter: Int = 0
+    
     
     init(id: UUID = UUID()){
         self.id = id
         host = Host.sampleData[0]
  
     }
+   
+    
+    
 
     func monitoringHost(){
         if (isMonitoring == false){
-        hostStatus = checkingHostStatus()
+        //hostStatus = checkingHostStatus()
         guard hostStatus == .reachable else {return}
            failureCounter = 0
            isMonitoring = true
@@ -46,6 +50,7 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
             if failureCounter >= MAX_FAILURE_PERMITTED {
                 timer.invalidate()
                 isMonitoring = false
+             
                 NSLog("THE MONITORING HAS BEEN STOPED")
             }
             hostStatusMessage = hostStatus.Status()

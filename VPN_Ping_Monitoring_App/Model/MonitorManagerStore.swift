@@ -12,11 +12,12 @@ import Foundation
 class MonitorManagerStore: ObservableObject{
     @Published var monitorManagers : [MonitorManager] = []
 
-    func refresh() async throws -> (){
+    func refresh() async throws -> Void {
         try await monitorManagers.forEach { monitorManager in
         monitorManager.refresh()
       }
     }
+    
 
     private static func fileURL() throws -> URL{
         try FileManager.default.url(for: .documentDirectory,

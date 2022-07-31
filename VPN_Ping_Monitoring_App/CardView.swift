@@ -9,9 +9,10 @@ import SwiftUI
 
 struct CardView: View {
     
+    @ObservedObject var notificationManager = LocalNotificationManager()
     @ObservedObject var monitorManager: MonitorManager
-    
-    var body: some View {
+        var body: some View {
+
         VStack{
             VStack(alignment: .leading){
                 Text(monitorManager.host.name)
@@ -33,16 +34,16 @@ struct CardView: View {
                 Spacer()
                 
                     Label("The server is  \(monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
-                                .font(.caption)
+                    .font(.caption)
+                    }
                 }
-            }
+            
         }
         .onAppear(){
             monitorManager.monitoringHost()
-                
             }
-        }
     }
+}
 
 
 struct CardView_Previews: PreviewProvider {
@@ -51,24 +52,8 @@ struct CardView_Previews: PreviewProvider {
         CardView(monitorManager: MonitorManager.sampleMonitorManager)
             .previewLayout(.sizeThatFits)
     }
-}
-
-        
+ }
 
 
 
-
-
-
-
-
-
-                        
-
-
-
-                 
-
-
-
-
+ 
