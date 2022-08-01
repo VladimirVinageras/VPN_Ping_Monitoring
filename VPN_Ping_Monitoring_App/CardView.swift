@@ -20,8 +20,13 @@ struct CardView: View {
             }
             Spacer()
             VStack(alignment: .leading){
-                VStack(alignment: .center){
+                HStack(alignment: .center){
                     Label("\(monitorManager.host.hostname)", systemImage: "network")
+                    Spacer()
+                HStack(alignment: .center){
+                    Label ("Monitoring: \(String(monitorManager.isMonitoring)) " ,systemImage: "gearshape.2")
+                        .font(.caption)
+                    }
                 }
                 Spacer()
                 HStack{
@@ -37,13 +42,20 @@ struct CardView: View {
                     .font(.caption)
                     }
                 }
+              
             
         }
+            
+            
+            
+            
+            
         .onAppear(){
             monitorManager.monitoringHost()
             }
     }
 }
+
 
 
 struct CardView_Previews: PreviewProvider {
@@ -53,6 +65,17 @@ struct CardView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
  }
+
+
+
+private extension CardView{
+    var monitoringNotificationAction: () {
+        self.notificationManager.sendNotification(title: "Hurray!", subtitle: nil, body: "If you see this text, launching the local notification worked!", launchIn:2)
+        }
+    }
+
+
+  
 
 
 

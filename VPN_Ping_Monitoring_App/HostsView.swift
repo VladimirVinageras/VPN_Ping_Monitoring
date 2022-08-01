@@ -19,13 +19,19 @@ struct HostsView: View {
             ForEach($monitorManagers){ $monitorManager in
                 NavigationLink(destination: DetailView(monitorManager: $monitorManager)){
                     CardView(monitorManager: monitorManager)
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                    removeMonitorManager(with: monitorManager.id)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
             }
         }
             .onChange(of: scenePhase){ phase in
                 if phase == .inactive {saveAction()}
             }
         }
-    
         .navigationTitle("Hosts")
         .toolbar{
             ToolbarItem(placement: .confirmationAction){
@@ -87,5 +93,10 @@ private extension HostsView{
                     monitorManager.refresh()
             }
         }
+    }
+    
+    func removeMonitorManager(with monitorManagerID: UUID) {
+           guard let index = monitorManagers.firstIndex(where: { $0.id == monitorManagerID }) else { return }
+           monitorManagers.remove(at: index)
     }
 }

@@ -18,7 +18,13 @@ class MonitorManagerStore: ObservableObject{
       }
     }
     
-
+    func stillWorkingInBackground() async throws -> Void {
+        try await monitorManagers.forEach { monitorManager in
+            monitorManager.isMonitoring = false
+            monitorManager.refresh()
+        }
+    }
+    
     private static func fileURL() throws -> URL{
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,

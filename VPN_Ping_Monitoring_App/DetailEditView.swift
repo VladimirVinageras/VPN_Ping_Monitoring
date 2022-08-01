@@ -17,15 +17,19 @@ struct DetailEditView: View {
                 
                 TextField("\(data.host.name)", text: $data.host.name)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    
             }
             Section(header: Text("Host Name")){
                 
                 TextField("\(data.host.hostname)", text: $data.host.hostname)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
             }
             Section(header: Text("IP Address")){
                 TextField("\(data.host.ipAddress)", text: $data.host.ipAddress)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .keyboardType(.URL)
                 
             }
@@ -33,6 +37,7 @@ struct DetailEditView: View {
                 TextField("\(data.checkFrequency)", value: $data.checkFrequency, formatter: NumberFormatter())
             }
         }
+        
     }
 }
 
