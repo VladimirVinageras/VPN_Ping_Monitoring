@@ -40,26 +40,17 @@ struct CardView: View {
                 
                     Label("The server is  \(monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
                     .font(.caption)
-                    }
                 }
-              
-            
+            }
         }
-            
-            
-            
-            
-            
         .onAppear(){
             monitorManager.monitoringHost()
-            }
+        }
     }
 }
 
 
-
 struct CardView_Previews: PreviewProvider {
-
     static var previews: some View {
         CardView(monitorManager: MonitorManager.sampleMonitorManager)
             .previewLayout(.sizeThatFits)
@@ -67,10 +58,9 @@ struct CardView_Previews: PreviewProvider {
  }
 
 
-
 private extension CardView{
     var monitoringNotificationAction: () {
-        self.notificationManager.sendNotification(title: "Hurray!", subtitle: nil, body: "If you see this text, launching the local notification worked!", launchIn:2)
+        self.notificationManager.sendNotification(title: "Host status has changed", subtitle: nil, body: "Host is not reachable. Check your Internet conection or check the aplication for more details", launchIn:2)
         }
     }
 

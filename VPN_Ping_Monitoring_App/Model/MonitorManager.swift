@@ -20,19 +20,12 @@ class MonitorManager: Identifiable, Codable,     ObservableObject{
     var isMonitoring: Bool = false
     private var hostStatus: Status = .reachable
     private var failureCounter: Int = 0
-    private var counter: Int = 0
-    
-
-    
+    private var counter: Int = 0  // Visualize the number of checks made
+        
     init(id: UUID = UUID()){
         self.id = id
         host = Host.sampleData[0]
- 
     }
-    
-   
-    
-    
 
     func monitoringHost(){
         if (isMonitoring == false){
@@ -45,7 +38,7 @@ class MonitorManager: Identifiable, Codable,     ObservableObject{
             hostStatus = checkingHostStatus()
             if hostStatus != Status.reachable{
                 failureCounter += 1
-                NSLog("\(failureCounter) It has to increase")
+                NSLog("\(failureCounter) It has to increase in failure")  //Visualize in log the number of failures
             } else {
                 failureCounter = 0
             }
@@ -73,15 +66,14 @@ class MonitorManager: Identifiable, Codable,     ObservableObject{
                    URLSession(configuration: .default)
                        .dataTask(with: request){ [self](_, response, error) -> Void in
                            guard error == nil else{
-                               NSLog("ERROR trying to reach server \(host.hostname)")
+                               NSLog("ERROR trying to reach server \(host.hostname)")   // Visualize the server status
                                hostStatus = .unknown
                                return
                            }
                            guard (response as? HTTPURLResponse)?
                                .statusCode == 200 else {
                                hostStatus = .unreachable
-                               NSLog("The server \(host.hostname) is down")
-                               
+                               NSLog("The server \(host.hostname) is down")    // Visualize the server status. The app send a request but the server is not OK 
                                return
                        }
                            NSLog("The server \(host.hostname) is ok")

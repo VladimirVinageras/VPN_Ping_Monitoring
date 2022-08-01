@@ -9,8 +9,7 @@ import SwiftUI
 import Foundation
 
 class LocalNotificationManager: ObservableObject{
-  //  var  notifications = [Notification]()
-    
+ 
     init() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if granted == true && error == nil {

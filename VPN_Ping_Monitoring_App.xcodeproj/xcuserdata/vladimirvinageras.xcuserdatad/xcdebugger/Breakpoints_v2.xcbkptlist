@@ -46,8 +46,8 @@
             filePath = "VPN_Ping_Monitoring_App/Model/LocalNotificationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "sendNotification(title:subtitle:body:launchIn:)"
             landmarkType = "7">
          </BreakpointContent>

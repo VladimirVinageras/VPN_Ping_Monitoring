@@ -12,7 +12,6 @@ struct DetailView: View {
     @State private var data = MonitorManager.ManagerData()
     @State private var isPresentingEditView = false
     
-    
     var body: some View {
         List{
             Section(header: Text("Host Name")){
@@ -62,6 +61,8 @@ struct DetailView: View {
         }
     }
 }
+
+
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(monitorManager: .constant(MonitorManager.sampleMonitorManager))

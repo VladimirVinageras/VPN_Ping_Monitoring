@@ -65,6 +65,7 @@ struct HostsView: View {
                                 newMonitorManagerData = MonitorManager.ManagerData()
                             }
                         }
+                        
                     }
             }
         }
@@ -73,17 +74,17 @@ struct HostsView: View {
                 saveAction()
             }
         }
-    }
+     }
   }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             HostsView(monitorManagers: .constant([MonitorManager.sampleMonitorManager]),saveAction: {})
         }
-    }
+     }
   }
-
 
 
 private extension HostsView{
