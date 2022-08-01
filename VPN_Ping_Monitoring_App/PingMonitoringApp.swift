@@ -38,19 +38,20 @@ struct VPN_Ping_Monitoring_AppApp: App {
             .sheet(item: $errorWrapper, onDismiss: {monitorManagerStore.monitorManagers[0] = MonitorManager.sampleMonitorManager}){wrapper in
                 ErrorView(errorWrapper: wrapper)
             }
-            
-            .onChange(of: scenePhase){ (phase) in
-                if phase == .background{
-                    Task{
-                        do{
-                            try await monitorManagerStore.refresh()
-                        }catch{
-                            errorWrapper = ErrorWrapper(error: error, guidance: "Try again later")
-                        }
+      }
+ 
+        .onChange(of: scenePhase){ (phase) in
+            if phase == .inactive || phase == .background{
+                Task{
+                    do{
+                        try await monitorManagerStore.stillWorkingInBackground()
+                    }catch{
+                        errorWrapper = ErrorWrapper(error: error, guidance: "Try again later")
                     }
                 }
             }
-      }
+        }
     }
 }
+
 

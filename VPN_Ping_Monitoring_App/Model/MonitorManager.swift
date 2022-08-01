@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class MonitorManager: Identifiable, Codable, ObservableObject{
+class MonitorManager: Identifiable, Codable,     ObservableObject{
 
     var MAX_FAILURE_PERMITTED = 5
     var HTTP_STRING = "https://"
@@ -22,19 +22,21 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
     private var failureCounter: Int = 0
     private var counter: Int = 0
     
+
     
     init(id: UUID = UUID()){
         self.id = id
         host = Host.sampleData[0]
  
     }
+    
    
     
     
 
     func monitoringHost(){
         if (isMonitoring == false){
-        //hostStatus = checkingHostStatus()
+            hostStatus = checkingHostStatus()
         guard hostStatus == .reachable else {return}
            failureCounter = 0
            isMonitoring = true
@@ -50,7 +52,6 @@ class MonitorManager: Identifiable, Codable, ObservableObject{
             if failureCounter >= MAX_FAILURE_PERMITTED {
                 timer.invalidate()
                 isMonitoring = false
-             
                 NSLog("THE MONITORING HAS BEEN STOPED")
             }
             hostStatusMessage = hostStatus.Status()

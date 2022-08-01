@@ -9,8 +9,7 @@ import SwiftUI
 import Foundation
 
 class LocalNotificationManager: ObservableObject{
-    var notifications = [Notification]()
-    
+  //  var  notifications = [Notification]()
     
     init() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
@@ -36,8 +35,8 @@ class LocalNotificationManager: ObservableObject{
             let attachment = try! UNNotificationAttachment(identifier: imageName, url: imageURL, options: .none)
             content.attachments = [attachment]
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: launchIn, repeats: false)
-              let request = UNNotificationRequest(identifier: "statusNotification", content: content, trigger: trigger)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: launchIn, repeats: false)
+            let request = UNNotificationRequest(identifier: "statusNotification", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
