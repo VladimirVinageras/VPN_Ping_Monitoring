@@ -50,6 +50,7 @@ struct CardView: View {
 }
 
 
+
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(monitorManager: MonitorManager.sampleMonitorManager)
@@ -60,8 +61,10 @@ struct CardView_Previews: PreviewProvider {
 
 private extension CardView{
     var monitoringNotificationAction: () {
+        if !monitorManager.isMonitoring{
         self.notificationManager.sendNotification(title: "Host status has changed", subtitle: nil, body: "Host is not reachable. Check your Internet conection or check the aplication for more details", launchIn:2)
         }
+     }
     }
 
 

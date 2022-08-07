@@ -19,14 +19,16 @@ struct HostsView: View {
             ForEach($monitorManagers){ $monitorManager in
                 NavigationLink(destination: DetailView(monitorManager: $monitorManager)){
                     CardView(monitorManager: monitorManager)
-                        .swipeActions(edge: .trailing) {
-                            Button(role: .destructive) {
-                                    removeMonitorManager(with: monitorManager.id)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
+                       
             }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                            removeMonitorManager(with: monitorManager.id)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+                
         }
             .onChange(of: scenePhase){ phase in
                 if phase == .inactive {saveAction()}
