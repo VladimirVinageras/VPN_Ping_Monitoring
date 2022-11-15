@@ -11,8 +11,12 @@ struct CardView: View {
     
     @ObservedObject var notificationManager = LocalNotificationManager()
     @ObservedObject var monitorManager: MonitorManager
+    @State private var errorWrapper: ErrorWrapper?
+    
+    @Environment (\.scenePhase) private var scenePhase
+    
         var body: some View {
-
+        
         VStack{
             VStack(alignment: .leading){
                 Text(monitorManager.host.name)
@@ -38,7 +42,7 @@ struct CardView: View {
                         .font(.caption)
                 Spacer()
                 
-                    Label("The server is  \(monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
+                    Label("The connection is  \(monitorManager.hostStatusMessage)",systemImage: "app.connected.to.app.below.fill")
                     .font(.caption)
                 }
             }
@@ -47,9 +51,8 @@ struct CardView: View {
             monitorManager.monitoringHost()
         }
     }
+        
 }
-
-
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
@@ -60,12 +63,14 @@ struct CardView_Previews: PreviewProvider {
 
 
 private extension CardView{
+
     var monitoringNotificationAction: () {
-        if !monitorManager.isMonitoring{
-        self.notificationManager.sendNotification(title: "Host status has changed", subtitle: nil, body: "Host is not reachable. Check your Internet conection or check the aplication for more details", launchIn:2)
-        }
+        if  !monitorManager.isMonitoring{
+         self.notificationManager.sendNotification(title: "Host status has changed", subtitle: nil, body: "Host is not reachable. Check your Internet conection or check the aplication for more details", launchIn:2)
      }
     }
+    }
+
 
 
   
